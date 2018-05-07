@@ -1,0 +1,213 @@
+<div class="col-lg-4 sidebar order-lg-2">
+	<aside id="infoblock" class="fixedsticky" style='min-width:355px;'>
+
+		_#side_menu#_
+
+		_#SIDE_UNTEN#_
+
+
+		<!-- die ads müssen nicht der accordion struktur folgen, bzw. werden in mobile ausgeblendet -->
+		<div class="d-none d-lg-block mb-sm-5">
+			<div class="card card-default box-shadow">
+				<div class="card-body">
+					<div style='width:300px;height:250px;background:#ccc'>
+						[ todo: medium rectangle ad ]
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--ende ad -->
+		<h5 id="btnText-sideinfohoro" class="collapsed d-block d-sm-block d-lg-none cat-green">
+			<a data-toggle="collapse" href="#collapseText-sideinfohoro" data-target="#collapseText-sideinfohoro" aria-expanded="false" aria-controls="collapseText-sideinfohoro">
+				Dein Tages-Horoskop
+			</a>
+		</h5>
+		<div id="collapseText-sideinfohoro" class="collapse cat-pink mb-sm-5" aria-labelledby="btnText-sideinfohoro" data-parent="#infoblock">
+			<div class="card mb-5 box-shadow featured-list">
+				<div class="card-body">
+					<h5 class="small category">Dein Tages-Horoskop</h5>
+					<p class="card-text d-none d-lg-block">_#HOROSKOP#_</p>
+				</div>
+			</div>
+		</div>
+
+	</aside>
+</div>
+
+
+</div>
+</div>
+<!--div class="mb-5 pb-5">
+	<div class="col-10 offset-1 text-center" style='width:100%;height:600px;background:#ccc;'>
+		<h2>Weitere Artikel</h2>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-1705169096959369" data-ad-slot="6320626341"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+	</div>
+</div-->
+
+</main>
+
+<footer id="footer">
+	<section class="footer-lists py-3 py-lg-5">
+		<div class="container">
+			<div class="row align-items-start">
+				<div class="col-md-3 logo align-self-baseline">
+					<h3>über familienbande24.de</h3>
+				</div>
+				<div class="col-md-3 about">
+					<h3>Unsere Dienste</h3>
+					<div id="theme-links" class="list-group">
+						<a class="list-group-item list-group-item-action" href="/wohin/index.html">Ausflugsziele für Familien</a>
+						<a class="list-group-item list-group-item-action" href="/wissen/nachwuchs/hebammen/index.html">Hebammen-Suche</a>
+						<a class="list-group-item list-group-item-action" href="/wissen/nachwuchs/kinderarzt/index.html">Kinderarzt-Suche</a>
+					</div>
+				</div>
+				<div class="col-md-3 topics">
+					<h3>Unsere Top-Themen</h3>
+					<div id="theme-links" class="list-group">
+						<a class="list-group-item list-group-item-action" href="#list-item-1">Jugendsprech-Lexikon</a>
+						<a class="list-group-item list-group-item-action" href="#list-item-2">Spiele für drinnen &amp; draußen</a>
+						<a class="list-group-item list-group-item-action" href="#list-item-3">Geburtenstatistik</a>
+					</div>
+				</div>
+				<div class="col-md-3 tools">
+					<h3>Unsere Tools</h3>
+					<div id="tool-links" class="list-group">
+						<a class="list-group-item list-group-item-action" href="#list-item-1">BMI-Rechner</a>
+						<a class="list-group-item list-group-item-action" href="#list-item-2">Wie groß wird mein Kind</a>
+						<a class="list-group-item list-group-item-action" href="#list-item-3">Kindergeld-Rechner</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="footer-bottom py-3">
+		<div class="container">
+			<div class="row align-items-md-start align-items-lg-center justify-content-between">
+				<div class="col-md-3 footer-links">
+					<a class="login-link align-self-center d-sm-block d-lg-inline" data-toggle="modal" data-target="#modalLoginDialog"><i class="fas fa-sign-in-alt"></i> Login</a>
+					<a class="register-link align-self-center d-sm-block d-lg-inline" href="template.php"><i class="fas fa-user-plus"></i> Anmelden</a>
+				</div>
+				<div class="col-md-4 offset-md-1 footer-meta-menu">
+					<ul class="d-flex flex-column flex-lg-row justify-content-center align-items-md-start align-items-lg-center">
+						<li><a href="/impressum.html">Impressum</a></li>
+						<li><a href="/datenschutz.html">Datenschutz</a></li>
+						<li><a href="/feedback.html">Kontakt</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+</footer>
+
+<div class="modal fade" id="modalSearchDialog" tabindex="-1" role="dialog" aria-labelledby="modalSearchDialogLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Suche nach Themen</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body cat-pink">
+				<div class="card card-default box-shadow search-box">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" id="tabbedList" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="tab-01" data-toggle="tab" href="#tabcontent-01" role="tab" aria-controls="tabcontent-01" aria-selected="true">Suche #1</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tab-02" data-toggle="tab" href="#tabcontent-02" role="tab" aria-controls="tabcontent-02" aria-selected="false">Suche #2</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="tabcontent-01" role="tabpanel" aria-labelledby="tab-01">
+							<h3 class="card-title">Gesucht wird ein ... Vorname</h3>
+							<p class="card-text d-none d-lg-block">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<form class="form-inline d-flex" id="simple-tabcontent-01">
+								<input class="form-control mr-sm-2" type="search" placeholder="Vorname eingeben" aria-label="Suche">
+								<button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i><span>Suche</span></button>
+
+							</form>
+						</div>
+						<div class="tab-pane" id="tabcontent-02" role="tabpanel" aria-labelledby="tab-02">
+							<h3 class="card-title">Gesucht wird eine ... Hebamme</h3>
+							<p class="card-text d-none d-lg-block">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<form class="form-inline d-flex" id="tabcontent-02-suche">
+								<input class="form-control mr-sm-2" type="search" placeholder="PLZ oder Ort eingeben" aria-label="Suche">
+								<button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i><span>Suche</span></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade has-image" id="modalLoginDialog" tabindex="-1" role="dialog" aria-labelledby="modalLoginDialogLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<img class="card-img-top" src="img/kinder1.jpg" alt="Card image cap">
+			</div>
+			<div class="modal-body cat-blue">
+				<form action="" method="post" name="Login_Form" class="form-signin">
+					<legend class="form-signin-heading">Schön, dass du wieder da bist!</legend>
+					<!--    <hr class="multiple-colors"><br>-->
+					<p>Dein persönlicher Login: Bitte trage hier die Zugangsdaten ein, die du nach der Anmeldung von uns per Mail zugeschickt bekommen hast:</p>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="col-sm-4"><label for="username" class="has-icons">
+			<i class="fas fa-user"></i><span>Dein Nickname</span>
+		</label></div>
+							<div class="col-sm-8"><input type="text" class="form-control" id="username" required placeholder="Dein Nickname"></div>
+
+						</div>
+						<div class="input-group">
+							<div class="col-sm-4"><label for="password" class="has-icons">
+			<i class="fas fa-lock"></i><span>Dein Password</span>
+			</label></div>
+							<div class="col-sm-8"><input type="password" class="form-control" required id="password" placeholder="Dein Password"></div>
+						</div>
+						<div class="input-group input-group-lg">
+							<div class="col-sm-8 offset-sm-4">
+								<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+							</div>
+						</div>
+					</div>
+					<div class="form-links">
+						<div class="col-sm-8 offset-sm-4">
+							<a href="#">Passwort vergessen?</a>
+							<a href="#">Kostenlose Anmeldung</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="/js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/stickybits.min.js"></script>
+<script src="js/customize.js"></script>
+<script src="js/helper.js"></script>
+</body>
+
+</html>
