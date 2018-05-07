@@ -1,0 +1,309 @@
+$HTTP["scheme"] == "https" {
+$HTTP["host"] =~ "^neu\.familienbande24\.de" {
+url.rewrite-once = (
+	"^/(index.html)?$" => "/fb2.fcgi?seite=start",
+	"^/g/bw/(.*)\.jpg\?(.*)$" => "/cgibin/makeBewertungsgrafik.cgi?guid=$1&art=$2",
+	"^/anmeldung.html(.*?)$" => "/fb2.fcgi?seite=texte&thema=anmeldung&$1",
+	"^/datenschutz.html" => "/fb2.fcgi?seite=texte&thema=datenschutz",
+	"^/feedback.html"  => "/fb2.fcgi?seite=texte&thema=feedback",
+	"^/impressum.html" => "/fb2.fcgi?seite=texte&thema=impressum",
+	"^/pwverg.html" => "/fb2.fcgi?seite=texte&thema=pwvrg",
+	"^/wissen/(index.html)?$" => "/fb2.fcgi?seite=wissen",
+	"^/nicht-mehr-vorhanden\.html" => "/fb2.fcgi?seite=nicht-mehr-da",
+
+	"^/wissen/bildung/arbeitsblaetter/ausmalbilder.html" => "/fb2.fcgi?seite=ausmalbilder",
+	"^/wissen/bildung/arbeitsblaetter/ausmalbilder/bild(.*).html" => "/fb2.fcgi?seite=arbeitsblatt_details&kategorie=Ausmalbilder&bild=$1",
+
+	"^/wohin/(index.html)?$" => "/fb2.fcgi?seite=familienerlebnisse",
+	"^/wohin/neu.html" => "/fb2.fcgi?seite=veranstaltungen_add",
+	"^/wohin/edit.html\?(.*)$" => "/fb2.fcgi?seite=veranstaltungen_add&id=$1",
+	"^/wohin/ort/(.+)/?(.*)$" => "/fb2.fcgi?seite=familienerlebnisse_ort&v_ort=$1&rest=$2",
+	"^/wohin/kreis/(.+)/index\.html" => "/fb2.fcgi?seite=familienerlebnisse_ort&kreis=$1&rest=$2",
+	"^/wohin/kreis/(.+)/" => "/fb2.fcgi?seite=familienerlebnisse_ort&kreis=$1&rest=$2",
+	"^/wohin/bundesland/(.+)/?(.*)$" => "/fb2.fcgi?seite=familienerlebnisse_ort&bundesland=$1&rest=$2",
+	"^/wohin/kategorie/(.+)/bundesland/(.+)/?(.*)$" => "/fb2.fcgi?seite=familienerlebnisse_ort&kategorie=$1&bundesland=$2&rest=$3",
+	"^/wohin/kategorie/(.+)/kreis/(.+)/?(.*)$" => "/fb2.fcgi?seite=familienerlebnisse_ort&kategorie=$1&kreis=$2&rest=$3",
+	"^/wohin/kategorie/(.+)/?(.*)$" => "/fb2.fcgi?seite=familienerlebnisse_ort&kategorie=$1&rest=$2",
+	"^/wohin/eintrag(.+).html" => "/fb2.fcgi?seite=familienerlebnisse_details&v_id=$1",
+
+	# Kinderarzt
+	"^/wissen/gesundheit/kinder/kinderarzt/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kinderarzt",
+	"^/wissen/gesundheit/kinder/kinderarzt/ort/(.+)(/+)?$" => "/fb2.fcgi?seite=texte&thema=kinderarzt&sid=6&ka=$1&d_ort=1",
+	"^/wissen/gesundheit/kinder/kinderarzt/leistung/(.+)/(.+)/?$" => "/fb2.fcgi?seite=texte&thema=kinderarzt&sid=7&l=$1&ka=$2&d_ort=1",
+	"^/wissen/gesundheit/kinder/kinderarzt/details/(\d+)/?(index.html)?$" => "/fb2.fcgi?seite=nachwuchs_kinderarzt_details&id=$1",
+	"^/wissen/gesundheit/kinder/kinderarzt/details/(\d+)/(.+).html" => "/fb2.fcgi?seite=nachwuchs_kinderarzt_details&id=$1&thema=$2",
+	"^/wissen/gesundheit/kinder/kinderarzt/suche.html" => "/fb2.fcgi?seite=texte&thema=kinderarzt&sid=2",
+	"^/wissen/gesundheit/kinder/kinderarzt/neu.html" => "/fb2.fcgi?seite=texte&thema=kinderarzt&sid=5",
+	"^/wissen/gesundheit/kinder/kinderarzt/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=kinderarzt&sid=$1",
+
+
+	"^/geschenke/advent/(index.html)?$"=> "/fb2.fcgi?seite=texte&thema=geschenke_advent",
+	"^/geschenke/advent/seite(\d+)\.html"=> "/fb2.fcgi?seite=texte&thema=geschenke_advent&sid=$1",
+
+	"^/wissen/gesundheit/(index.html)?$" => "fb2.fcgi?seite=wissen&thema=Gesundheit",
+	"^/wissen/nachwuchs/(index.html)?$" => "fb2.fcgi?seite=wissen&thema=Nachwuchs",
+	"^/wissen/geld/(index.html)?$" => "fb2.fcgi?seite=wissen&thema=Geld",
+	"^/geld/(index.html)?$" => "fb2.fcgi?seite=wissen&thema=Geld",
+
+	"^/wissen/nachwuchs/geburt/(index.html)?$" => "/fb2.fcgi?seite=wissen&thema=Nachwuchs&subrubrik=Geburt",
+	"^/wissen/nachwuchs/schwangerschaft/(index.html)?$" => "fb2.fcgi?seite=wissen&thema=Nachwuchs&subrubrik=Schwangerschaft",
+
+	"^/wissen/sonstiges/muttertag.html" => "/fb2.fcgi?seite=texte&thema=muttertag",
+	"^/wissen/sonstiges/spenden-leitfaden.html" => "/fb2.fcgi?seite=texte&thema=spenden-leitfaden",
+	"^/wissen/sonstiges/gala.html" => "/fb2.fcgi?seite=texte&thema=gala1",
+	"^/wissen/sonstiges/gala2.html" => "/fb2.fcgi?seite=texte&thema=gala2",
+	"^/wissen/sonstiges/fluechtlinge.html" => "/fb2.fcgi?seite=texte&thema=fluechtling",
+
+
+	"^/wissen/sonstiges/zeremonien/taufe/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=taufe",
+	"^/wissen/sonstiges/zeremonien/taufe/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=taufe&sid=$1",
+	"^/wissen/sonstiges/zeremonien/erstkommunion/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kommunion",
+	"^/wissen/sonstiges/zeremonien/erstkommunion/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=kommunion&sid=$1",
+
+	"^/wissen/nachwuchs/sonstiges/autokindersitze.html" => "/fb2.fcgi?seite=texte&thema=autokindersitze",
+	"^/wissen/nachwuchs/sonstiges/kinderwagen-sicherheit.html" => "/fb2.fcgi?seite=texte&thema=kinderwagen-sicherheit",
+	"^/wissen/nachwuchs/sonstiges/einschulung.html" => "/fb2.fcgi?seite=texte&thema=einschulung",
+	"^/wissen/nachwuchs/sonstiges/sicheres-kinderfahrrad.html" => "/fb2.fcgi?seite=texte&thema=sicheres-kinderfahrrad",
+	"^/wissen/nachwuchs/sonstiges/radfahrweg.html" => "/fb2.fcgi?seite=texte&thema=fahrradwege",
+	"^/wissen/nachwuchs/sonstiges/babyfon.html" => "/fb2.fcgi?seite=texte&thema=babyfone",
+
+	"^/wissen/nachwuchs/ernaehrung/babynahrung.html" => "/fb2.fcgi?seite=texte&thema=babynahrung",
+	"^/wissen/nachwuchs/ernaehrung/optimierte-mischkost.html" => "/fb2.fcgi?seite=texte&thema=optimierte-mischkost",
+
+
+	"^/wissen/nachwuchs/ernaehrung/stillen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=stillen",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite1.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=1",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite2.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=2",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite3.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=3",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite4.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=4",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite5.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=5",
+	"^/wissen/nachwuchs/ernaehrung/stillen/seite6.html" => "/fb2.fcgi?seite=texte&thema=stillen&sid=6",
+
+	"^/wissen/nachwuchs/paedagogik/?(index.html)?$" => "/fb2.fcgi?seite=wissen&thema=Nachwuchs&subrubrik=P%E4dagogik",
+	"^/wissen/nachwuchs/paedagogik/vaeter.html" => "/fb2.fcgi?seite=texte&thema=moderner-vater",
+	"^/wissen/nachwuchs/paedagogik/kindermode.html" => "/fb2.fcgi?seite=texte&thema=kindermode1",
+	"^/wissen/nachwuchs/paedagogik/familienhund.html" => "/fb2.fcgi?seite=texte&thema=familienhund",
+	"^/wissen/nachwuchs/paedagogik/fsk.html" => "/fb2.fcgi?seite=texte&thema=fsk",
+	"^/wissen/nachwuchs/paedagogik/umzug.html" => "/fb2.fcgi?seite=texte&thema=umzug",
+	"^/wissen/nachwuchs/paedagogik/taschengeld.html" => "/fb2.fcgi?seite=texte&thema=taschengeld",
+	"^/wissen/nachwuchs/paedagogik/patchwork.html" => "/fb2.fcgi?seite=texte&thema=patchwork",
+	"^/wissen/nachwuchs/paedagogik/fotografieren.html" => "/fb2.fcgi?seite=texte&thema=kinder-fotografieren",
+
+	"^/wissen/nachwuchs/paedagogik/kinderzirkus/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kinderzirkus",
+	"^/wissen/nachwuchs/paedagogik/spielen/geocaching.html" => "/fb2.fcgi?seite=texte&thema=geocaching",
+
+	"^/wissen/nachwuchs/paedagogik/kindergeburtstag/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kindergeburtstag",
+	"^/wissen/nachwuchs/paedagogik/kindergeburtstag/seite(\d+)\.html" => "/fb2.fcgi?seite=texte&thema=kindergeburtstag&sid=$1",
+
+	"^/wissen/nachwuchs/paedagogik/spielen/spielzeug/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=richtige-spielzeug",
+	"^/wissen/nachwuchs/paedagogik/spielen/spielzeug/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=richtige-spielzeug&sid=$1",
+
+	"^/wissen/nachwuchs/paedagogik/spielen/richtig-spielen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=richtig-spielen",
+	"^/wissen/nachwuchs/paedagogik/spielen/richtig-spielen/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=richtig-spielen&sid=$1",
+
+	"^/wissen/nachwuchs/paedagogik/spielen/spielesammlung/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=spielesammlung",
+	"^/wissen/nachwuchs/paedagogik/spielen/spielesammlung/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=spielesammlung&sid=$1",
+	"^/wissen/nachwuchs/paedagogik/spielen/spielesammlung/spiel(\d+)\.html"=>"/fb2.fcgi?seite=unterhaltung_spiele_detail&spiel=$1",
+
+	"^/wissen/nachwuchs/recht/umzug-renovierung.html" => "/fb2.fcgi?seite=texte&thema=umzug-renovierung",
+
+	"^/interaktiv/(index.html)?" => "/fb2.fcgi?seite=texte&thema=interaktiv",
+
+
+	"^/wissen/nachwuchs/schwangerschaft/fliegen\.html" => "/fb2.fcgi?seite=texte&thema=fliegen-schwangerschaft",
+	"^/wissen/nachwuchs/schwangerschaft/kalender/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=schwangerschaftskalender",
+	"^/wissen/nachwuchs/schwangerschaft/kalender/ssw(.*).html" => "/fb2.fcgi?seite=texte&thema=schwangerschaftskalender&ssw=$1",
+	"^/wissen/nachwuchs/schwangerschaft/(.*)\.html" => "/fb2.fcgi?seite=texte&thema=$1",
+
+
+	#"^/wissen/nachwuchs/schwangerschaft/schwangerschaftsanzeichen.html" => "/fb2.fcgi?seite=texte&thema=schwangerschaftszeichen",
+	#"^/wissen/nachwuchs/schwangerschaft/nagelpflege.html" => "/fb2.fcgi?seite=texte&thema=schwanger-nagelpflege",
+	#"^/wissen/nachwuchs/schwangerschaft/einkaufszettel.html" => "/fb2.fcgi?seite=texte&thema=schwangerschaft-einkaufszettel",
+	#"^/wissen/nachwuchs/schwangerschaft/gesund-schwanger.html" => "/fb2.fcgi?seite=texte&thema=gesund-schwanger",
+
+	"^/wissen/nachwuchs/geburt/stress-vermeiden.html" => "/fb2.fcgi?seite=texte&thema=geburt-stress-vermeiden",
+	"^/wissen/nachwuchs/geburt/nabelschnurblut.html" => "/fb2.fcgi?seite=texte&thema=nabelschnurblut",
+	"^/wissen/nachwuchs/geburt/kliniktasche.html" => "/fb2.fcgi?seite=texte&thema=kliniktasche",
+
+
+	"^/wissen/nachwuchs/geburt/statistik/(index.html)?$" => "/fb2.fcgi?seite=nachwuchs_geburten_detail",
+	"^/wissen/nachwuchs/geburt/statistik/(.*?-\d+)/" => "/fb2.fcgi?seite=nachwuchs_geburten_detail&wann=$1",
+	"^/wissen/nachwuchs/geburt/statistik/liste/(.+)/(.+)/(.+)$" =>"fb2.fcgi?seite=nachwuchs_geburten_liste&m=$1&j=$2&start=$3",
+
+	"/wissen/nachwuchs/geburt/geburtsanzeigen/neu.html" => "/fb2.fcgi?seite=texte&thema=geburtsanzeige-neu",
+	"^/wissen/nachwuchs/geburt/geburtsanzeigen/(index.html)?$" => "/fb2.fcgi?seite=geburtsanzeige",
+	"^/wissen/nachwuchs/geburt/geburtsanzeigen/(\d+.html)$" => "/fb2.fcgi?seite=geburtsanzeige&n=$1",
+	"^/nachwuchs/babies/fotos/details/(\d+)&" => "/fb2.fcgi?seite=geburtsanzeige&n=$1",
+
+	"^/wissen/nachwuchs/jugendlexikon/index.html" => "/fb2.fcgi?seite=texte&thema=jugendlexikon",
+
+
+	"^/wissen/gesundheit/bmi/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=bmi",
+	"^/wissen/gesundheit/bmi/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=bmi&sid=$1",
+	"^/wissen/gesundheit/kinder/impfen.html" => "/fb2.fcgi?seite=texte&thema=impfen",
+	"^/wissen/gesundheit/kinder/wachstum.html" => "/fb2.fcgi?seite=texte&thema=kinderwachstum",
+	"^/wissen/gesundheit/kinder/kinderschuhe.html" => "/fb2.fcgi?seite=texte&thema=kinderschuhe",
+	"^/wissen/gesundheit/kinder/laeuse.html" => "/fb2.fcgi?seite=texte&thema=laeuse",
+	"^/wissen/gesundheit/kinder/immunsystem.html" => "/fb2.fcgi?seite=texte&thema=immunsystem",
+	"^/wissen/gesundheit/kinder/zahnung.html" => "/fb2.fcgi?seite=texte&thema=baby-zahnung",
+	"^/wissen/gesundheit/kinder/mittagsschlaf.html" => "/fb2.fcgi?seite=texte&thema=mittagsschlaf",
+	"^/wissen/gesundheit/kinder/kinder-sehschwaeche.html" => "/fb2.fcgi?seite=texte&thema=kinder-sehschwaeche",
+
+	"^/wissen/gesundheit/kinder/kinderkrankheiten/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kinderkrankheiten",
+	"^/wissen/gesundheit/kinder/kinderkrankheiten/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=kinderkrankheiten&sid=$1",
+
+	"^/wissen/gesundheit/kinder/vorsorgeuntersuchungen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=vorsorgeuntersuchungen",
+	"^/wissen/gesundheit/kinder/vorsorgeuntersuchungen/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=vorsorgeuntersuchungen&sid=$1",
+	"^/nachwuchs/vorsorgeuntersuchung/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=vorsorgeuntersuchungen",
+
+	"^/wissen/gesundheit/fruchtbarkeit/menstruation/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=menstruation",
+	"^/wissen/gesundheit/fruchtbarkeit/menstruation/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=menstruation&sid=$1",
+	"^/wissen/gesundheit/fruchtbarkeit/unfruchtbarkeit/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=kinderwunsch",
+	"^/wissen/gesundheit/fruchtbarkeit/unfruchtbarkeit/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=kinderwunsch&sid=$1",
+
+	"^/wissen/gesundheit/ernaehrung/e-stoffe/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=e-stoffe",
+	"^/wissen/gesundheit/ernaehrung/e-stoffe/(E.*?).html" => "/fb2.fcgi?seite=medizin_nahrung_e_stoffe&e=$1",
+	"^/medizin/lebensmittel/lebensmittelzusatzstoffe/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=naehrstoffe",
+
+	"^/wissen/gesundheit/ernaehrung/naehrstoffe/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=naehrstoffe",
+	"^/wissen/gesundheit/ernaehrung/naehrstoffe/(.*?).html" => "/fb2.fcgi?seite=medizin_naehrstoffe_detail&n=$1",
+
+	"^/wissen/gesundheit/kinder/(.*?).html" => "/fb2.fcgi?seite=texte&thema=$1",
+
+	"^/medizin/vitamine-naehrstoffe/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=naehrstoffe",
+	"^/medizin/(index.html)?$" => "/fb2.fcgi?seite=wissen&thema=Gesundheit",
+
+	"^/wissen/geld/flohmarkt-familien.html" => "/fb2.fcgi?seite=texte&thema=flohmarkt",
+	"^/wissen/geld/private-pflegeversicherung.html" => "/fb2.fcgi?seite=texte&thema=private-pflegeversicherung",
+	"^/wissen/geld/baufoerderung.html" => "/fb2.fcgi?seite=texte&thema=baufoerderung",
+	"^/wissen/geld/elterngeld.html" => "/fb2.fcgi?seite=texte&thema=elterngeld",
+	"^/wissen/geld/steuerverguenstigungen.html" => "/fb2.fcgi?seite=texte&thema=steuerverguenstigungen",
+	"^/wissen/geld/sparen/stromsparen.html" => "/fb2.fcgi?seite=texte&thema=stromsparen",
+	"^/wissen/geld/haushaltsbuch.html" => "/fb2.fcgi?seite=texte&thema=haushaltsbuch",
+	"^/wissen/geld/familienversicherungen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=familienversicherungen",
+	"^/wissen/geld/familienversicherungen/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=familienversicherungen&sid=$1",
+	"^/wissen/geld/kindergeld/(index.html)?(\?.*)?$" => "/fb2.fcgi?seite=texte&thema=kindergeld",
+	"^/wissen/geld/kindergeld/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=kindergeld&sid=$1",
+	"^/wissen/geld/schufa/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=schufa",
+	"^/wissen/geld/schufa/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=schufa&sid=$1",
+	"^/wissen/geld/clever-sparen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=clever-sparen",
+	"^/wissen/geld/clever-sparen/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=clever-sparen&sid=$1",
+
+	"^/wissen/freizeit/urlaub/kofferpacken.html" => "/fb2.fcgi?seite=texte&thema=kofferpacken",
+
+	"^/wissen/freizeit/urlaub/landurlaub.html" => "/fb2.fcgi?seite=texte&thema=landurlaub",
+	"^/wissen/freizeit/urlaub/ausflug-pfingsten.html" => "/fb2.fcgi?seite=texte&thema=ausflug-pfingsten",
+	"^/wissen/freizeit/urlaub/disney-paris.html" => "/fb2.fcgi?seite=texte&thema=urlaub_disney",
+	"^/wissen/freizeit/urlaub/ski.html" => "/fb2.fcgi?seite=texte&thema=urlaub-ski",
+
+	"^/sprueche/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=sprueche",
+	"^/sprueche/(\d+)\.html" => "/fb2.fcgi?seite=sprueche_details&id=$1",
+	"^/sprueche/(\d+)-(\d+)\.html" => "/fb2.fcgi?seite=sprueche_details_grafik&id=$1&sid=$2",
+	"^/sprueche/(.*?)/(index.html)?$" => "/fb2.fcgi?seite=sprueche&art=$1",
+	"^/sprueche/(.*?)/seite(.+)\.html" => "/fb2.fcgi?seite=sprueche&art=$1&start=$2",
+	"^/sprueche/(.*?)$" => "/fb2.fcgi?seite=sprueche&art=$1",
+
+	"^/nachwuchs/geburt/gedichte/?(index.html)?$" => "/fb2.fcgi?seite=sprueche&art=geb_gedichte",
+	"^/nachwuchs/geburt/gedichte/seite(.+).html" => "/fb2.fcgi?seite=sprueche&art=geb_gedichte&start=$1",
+	"^/nachwuchs/geburt/glueckwuensche/?(index.html)?$" => "/fb2.fcgi?seite=sprueche&art=geb_glueckwuensche",
+	"^/nachwuchs/geburt/glueckwuensche/seite(.+).html" => "/fb2.fcgi?seite=sprueche&art=geb_glueckwuensche&start=$1",
+	"^/nachwuchs/geburt/sprueche/?(index.html)?$" => "/fb2.fcgi?seite=sprueche&art=geb_sprueche",
+	"^/nachwuchs/geburt/sprueche/seite(.+).html" => "/fb2.fcgi?seite=sprueche&art=geb_sprueche&start=$1",
+
+
+	"^/wissen/nachwuchs/jugendlexikon/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=jugendlexikon",
+	"^/wissen/nachwuchs/jugendlexikon/(\d+)\.html" => "/fb2.fcgi?seite=nachwuchs_jugend_lexikon_details&w=$1",
+
+	"^/wissen/.*/(.*?).html" => "/fb2.fcgi?seite=texte&thema=$1",
+
+	"^/unterhaltung/horoskop/(index\.html)?$"	=> "/fb2.fcgi?seite=texte&thema=horoskop&tag=heute",
+	"^/unterhaltung/horoskop/(\d.*?)\.html"	=> "/fb2.fcgi?seite=texte&thema=horoskop&t=$1",
+
+	"^/nachwuchs/hebammen/(index.html)?$" => "/fb2.fcgi?seite=texte&thema=hebammen",
+	"^/nachwuchs/hebammen/ort/(.+)(/+)?$" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=6&ha=$1&d_ort=1",
+	"^/nachwuchs/hebammen/leistung/(.+)/(.+)/?$" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=7&l=$1&ha=$2&d_ort=1",
+    "^/nachwuchs/hebammen/details/(\d+)/?(index.html)?$" => "/fb2.fcgi?seite=nachwuchs_hebammen_details&id=$1",
+    "^/nachwuchs/hebammen/details/(\d+)/(.+).html" => "/fb2.fcgi?seite=nachwuchs_hebammen_details&id=$1&thema=$2",
+    "^/nachwuchs/hebammen/suche.html" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=2",
+    "^/nachwuchs/hebammen/neu.html" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=5",
+    "^/nachwuchs/hebammen/seite(\d+).html" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=$1",
+    "^/nachwuchs/hebammen/info/Hebammen(.+)" => "/fb2.fcgi?seite=texte&thema=hebammen",
+    "^/nachwuchs/hebammen/info/Die%20Aufgaben(.+)" => "/fb2.fcgi?seite=texte&thema=hebammen&sid=2",
+    "^/nachwuchs/hebammen/info/Besondere(.+)"=>"/nachwuchs/hebammen/seite4.html",
+    "^/nachwuchs/hebammen/info/Die%20richtige(.+)"		=> "/nachwuchs/hebammen/seite3.html",
+
+
+	"^/nachwuchs/geburt/statistik/vornamen/(.+)/\??(.+)?$"		=> "/fb2.fcgi?seite=vornamen&thema=geburten&n=$1&$2",
+
+
+    "^/vornamen/(index.html)?$"			=> "/fb2.fcgi?seite=vornamen",
+    "^/vornamen/merkzettel.html(.*?)$"			=> "/fb2.fcgi?seite=vornamen&thema=merkzettel$1",
+    "^/vornamen/allgemein.html$"			=> "/fb2.fcgi?seite=vornamen&thema=info",
+    "^/vornamen/namensrecht.html$"			=> "/fb2.fcgi?seite=vornamen&thema=recht",
+    "^/vornamen/nachnamen.html\??(.*?)$"			=> "/fb2.fcgi?seite=vornamen&thema=nachnamen&$1",
+    "^/vornamen/suche.html(.*?)$"			=> "/fb2.fcgi?seite=vornamen&thema=suche$1",
+    "^/vornamen/vornamen-kugel.html(.*?)$"			=> "/fb2.fcgi?seite=vornamen&thema=kugel$1",
+    "^/vornamen/charts/index.html\??(.*?)$"			=> "/fb2.fcgi?seite=vornamen&thema=top-10&$1",
+    "^/vornamen/charts/(index.html)?$"			=> "/fb2.fcgi?seite=vornamen&thema=top-10",
+    "^/vornamen/weltweit.html$"			=> "/fb2.fcgi?seite=vornamen&thema=weltweit",
+    "^/vornamen/laender/(.+)e,vornamen/buchstabe-(.+)-(.).html$" => "/fb2.fcgi?seite=vornamen&thema=land&land=$1&b=$2&g=$3",
+	"^/vornamen/laender/(.+)e,vornamen/jungs_(.+).html" => "/fb2.fcgi?seite=vornamen&thema=land&land=$1&g=m",
+	"^/vornamen/laender/(.+)e,vornamen/maedchen_(.+).html" => "/fb2.fcgi?seite=vornamen&thema=land&land=$1&g=w",
+	"^/vornamen/laender/(.+)e,vornamen/?(index.html)?$" => "/fb2.fcgi?seite=vornamen&thema=land&land=$1",
+
+	"^/vornamen/(jungs|maedchen)/liste/.*" => "/nicht-mehr-vorhanden.html",
+
+	"^/vornamen/jungs/(.+)/allgemein\.html$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=allgemein",
+	"^/vornamen/jungs/(.+)/bedeutung\.html$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=bedeutung",
+	"^/vornamen/jungs/(.+)/beliebtheit\.html$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=beliebtheit",
+	"^/vornamen/jungs/(.+)/promis\.html$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=promis",
+	"^/vornamen/jungs/(.+)/sonstiges\.html$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=sonstiges",
+	"^/vornamen/jungs/(.+)/(index\.html)?$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=uebersicht",
+	"^/vornamen/jungs/(index\.html)?$" => "/fb2.fcgi?seite=vornamen&g=m&thema=land&land=deutsch",
+#	"^/vornamen/jungs/(.+)/seite1\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=uebersicht",
+#	"^/vornamen/jungs/(.+)/seite2\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=allgemein",
+#	"^/vornamen/jungs/(.+)/seite3\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=bedeutung",
+#	"^/vornamen/jungs/(.+)/seite4\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=beliebtheit",
+#	"^/vornamen/jungs/(.+)/seite5\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=promis",
+#	"^/vornamen/jungs/(.+)/seite6\.html" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=sonstiges",
+	"^/vornamen/jungs/([A-Za-z]+)$" => "/fb2.fcgi?seite=vornamen&g=m&thema=details&n=$1&tab=uebersicht",
+
+
+
+	"^/vornamen/maedchen/(.+)/allgemein\.html$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=allgemein",
+	"^/vornamen/maedchen/(.+)/bedeutung\.html$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=bedeutung",
+	"^/vornamen/maedchen/(.+)/beliebtheit\.html$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=beliebtheit",
+	"^/vornamen/maedchen/(.+)/promis\.html$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=promis",
+	"^/vornamen/maedchen/(.+)/sonstiges\.html$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=sonstiges",
+	"^/vornamen/maedchen/(.+)/(index\.html)?$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=uebersicht",
+#	"^/vornamen/maedchen/(.+)/seite1.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=uebersicht",
+#	"^/vornamen/maedchen/(.+)/seite2.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=allgemein",
+#	"^/vornamen/maedchen/(.+)/seite3.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=bedeutung",
+#	"^/vornamen/maedchen/(.+)/seite4.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=beliebtheit",
+#	"^/vornamen/maedchen/(.+)/seite5.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=promis",
+#	"^/vornamen/maedchen/(.+)/seite6.html" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=sonstiges",
+	"^/vornamen/maedchen/([A-Za-z]+)$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=uebersicht",
+#	"^/vornamen/maedchen/(.+)$" => "/fb2.fcgi?seite=vornamen&g=w&thema=details&n=$1&tab=uebersicht",
+
+
+	"^/index.fcgi\?seite=namen_det3f&g=(.)&n=(.*?)&subseite=2" => "/fb2.fcgi?seite=vornamen&g=$1&thema=details&n=$2&tab=allgemein",
+	"^/index.fcgi\?seite=namen_det3f&g=(.)&n=(.*?)&subseite=3" => "/fb2.fcgi?seite=vornamen&g=$1&thema=details&n=$2&tab=bedeutung",
+	"^/index.fcgi\?seite=namen_det3f&g=(.)&n=(.*?)&subseite=4" => "/fb2.fcgi?seite=vornamen&g=$1&thema=details&n=$2&tab=beliebtheit",
+	"^/index.fcgi\?seite=namen_det3f&g=(.)&n=(.*?)&subseite=5" => "/fb2.fcgi?seite=vornamen&g=$1&thema=details&n=$2&tab=promis",
+	"^/index.fcgi\?seite=namen_det3f&g=(.)&n=(.*?)&subseite=6" => "/fb2.fcgi?seite=vornamen&g=$1&thema=details&n=$2&tab=sonstiges",
+
+
+	"^/profil/(index.html)?$" => "/fb2.fcgi?seite=profil",
+	"^/profil/kinderarzt\.html$" => "/fb2.fcgi?seite=profil_kinderarzt",
+	"^/profil/kinderarzt\.html\??(.*)?" => "/fb2.fcgi?seite=profil_kinderarzt&$1",
+	"^/profil/bmi/index\.html\?(.*)$" => "/fb2.fcgi?seite=profil_bmi&$1",
+	"^/profil/bmi/(index.html)?" => "/fb2.fcgi?seite=profil_bmi",
+	"^/profil/vorsorgetermine/(index.html)?$" => "/fb2.fcgi?seite=profil_vorsorge",
+	"^/profil/passwort.html$" => "/fb2.fcgi?seite=profil_pw",
+	"^/profil/kuendigen.html$" => "/fb2.fcgi?seite=profil_kuend",
+	"^/profil/hebamme.html\??(.*)?" => "/fb2.fcgi?seite=profil_hebamme&$1",
+
+
+)
+}
+}
