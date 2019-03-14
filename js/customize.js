@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
 
         // If width width is below 600px, switch to the mobile stylesheet
         if (newWindowWidth < 576) {
-            $('#top-nav').removeClass('fixedsticky');
+            //$('#top-nav').removeClass('fixedsticky');
         }
         if (newWindowWidth > 426) {
 
@@ -17,16 +17,18 @@ jQuery(document).ready(function ($) {
     $('.carousel').carousel();
     stickybits('.fixedsticky', {useStickyClasses: true});
     $(window).bind("resize", resizeWindow);
-    
-    $('.dropdown-header').on("click", function (e) {
-        $(this).next('ul').toggleClass('show');
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $('[class*="sub-cat-"] > div').each(function(){
-        if($(this).hasClass('d-flex')){
+    if ($(window).width() <= 600)
+    {
+        $('.dropdown-header').on("click", function (e) {
+            $(this).next('ul').toggleClass('show');
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    }
+    $('[class*="sub-cat-"] > div').each(function () {
+        if ($(this).hasClass('d-flex')) {
             console.log("Found");
-           $(this).parent('div').addClass('sub-cat-large');
+            $(this).parent('div').addClass('sub-cat-large');
         }
     });
 //    if($('[class*="sub-cat-"] > div').hasClass('d-flex')){
